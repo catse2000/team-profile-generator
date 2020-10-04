@@ -2,151 +2,13 @@ const inquirer = require('inquirer');
 // const fs = require('fs');
 // const generatePage = require('./src/page-template.js');
 const Manager = require('./lib/Manager');
-// const Engineer = require('./lib/Engineer');
-// const Intern = require('./lib/Intern');
-
-//psuedocode
-    //application opens and greets the user
-    //Application asks is the user would like to create a team
-        //if yes, start up team
-        //if no, say goodbye
-    //Yes: Application asks who to add to the team
-        //if Manager, ask:
-            // Name
-            // ID
-            // Email
-            // Office Number
-        //If Engineer, ask:
-            // Name
-            // ID
-            // Email
-            // Github
-        //If Intern, ask:
-            //Name
-            // ID
-            // Email
-            // School
-        //If other, ask:
-            //Name
-            //ID
-            //Email
-    //One a person is added, application will ask again if you will add another employee
-        //If yes, restart process
-        //If no, end program
-
-// Prompts Needed
-    // Would you like to create a team?
-        // Yes
-        // No
-    // What role does this person serve?
-        // Manager
-        // Engineer
-        // Intern
-        // Undefined
-    // Would you like to add another person?
-        //If Yes, restart
-        // If No, end
-
-// Methods needed
-    // initializeApp()
-    // addEmployee()
-    // endApp()
-
-// class App{
-//     constructor() {
-//         this.employees = [];
-//         this.manager;
-//         this.engineer;
-//         this.intern;
-//     };
-
-//     initializeApp() {
-//         inquirer
-//             .prompt({
-//                 type: 'list',
-//                 name: 'teamStart',
-//                 message: 'Would you like to create a team page?',
-//                 choices: ["Yes", "No"]
-//             })
-//             .then(({ teamStart }) => {
-//                 if(teamStart === "Yes") {
-//                     this.determineRole();
-//                 }
-//                 else{
-//                     this.endApp();
-//                 }
-//             })
-//     }
-
-//     determineRole() {
-//         inquirer
-//             .prompt({
-//                 type: 'list',
-//                 name: 'employeeRole',
-//                 message: "What is the employee's role?",
-//                 choices: ["Manager", "Engineer", "Intern"]
-//             })
-//             .then(({ employeeRole }) => {
-//                 if(employeeRole === "Manager"){
-//                     inquirer
-//                         .prompt([
-//                             {
-//                                 type: 'text',
-//                                 name: 'name',
-//                                 message: "What is the employee's name?",
-//                                 validate: nameInput => {
-//                                     if (nameInput) {
-//                                         return true;
-//                                     }
-//                                     else{
-//                                         console.log("Please enter a name.");
-//                                         return false;
-//                                     }
-//                                 }
-//                             },
-//                             {
-//                                 type: 'text',
-//                                 name: 'id',
-//                                 message: "What is the employee's ID?",
-//                                 validate: idInput => {
-//                                     if (idInput) {
-//                                         return true;
-//                                     }
-//                                     else{
-//                                         console.log("Please enter an ID.");
-//                                         return false;
-//                                     }
-//                                 }
-//                             },
-//                             {
-//                                 type: 'text',
-//                                 name: 'email',
-//                                 message: "What is the employee's email address?",
-//                                 validate: emailInput => {
-//                                     if (emailInput) {
-//                                         return true;
-//                                     }
-//                                     else {
-//                                         console.log("Please enter an email address");
-//                                         return false;
-//                                     }
-//                                 }
-//                             }
-//                     ])
-//                 }
-//             })
-
-//     }
-
-    
-// };
-
-// new App().initializeApp();
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 const promptEmployees = teamData => {
-    // if (!teamData.employees){
-    //     teamData.employees = [];
-    // };
+    if (!teamData){
+        teamData = [];
+    };
 
     return inquirer.prompt([
         {
@@ -247,27 +109,32 @@ const promptEmployees = teamData => {
         }
     ])
     .then(employeeData => {
-        console.log("this works");
-        // for (var i = 0; i < employeeData.length; i++){
-        //     if(employeeData[i].role === "Engineer"){
-        //         const engineer = new Engineer(employeeData.name, employeeData.id, employeeData.email, employeeData.github);
-        //         //teamData.employees.push(engineer);
-        //         console.log(engineer);
-        //         console.log("Went throught his process");
-        //     }
-        //     else{
-        //         const intern = new Intern(employeeData.name, employeeData.id, employeeData.email, employeeData.school);
-        //         //teamData.employees.push(intern);
-        //         console.log(intern);
-        //     }
-        // };
+        switch(employeeData.role) {
+            case 'Manager':
+                const manager = new Manager(employeeData.name, employeeData.id, employeeData.email, employeeData.office);
+                teamData.push(manager);
+                console.log("You added a Manager!");
+                break;
+            case 'Engineer':
+                const engineer = new Engineer(employeeData.name, employeeData.id, employeeData.email, employeeData.github);
+                teamData.push(engineer);
+                console.log("You added an Engineer!")
+                break;
+            case 'Intern':
+                const intern = new Intern(employeeData.name, employeeData.id, employeeData.email, employeeData.school);
+                teamData.push(intern);
+                console.log("You added an Intern!");
+                break;
+
+        }
         
-        // if(employeeData.confirmAddEmployee){
-        //     return promptEmployees(teamData);
-        // }
-        // else{
-        //     return teamData;
-        // }
+        console.log(teamData);
+        if(employeeData.confirmAddEmployee){
+            return promptEmployees(teamData);
+        }
+        else{
+            return teamData;
+        }
     })
 };
 
