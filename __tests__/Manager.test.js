@@ -1,13 +1,66 @@
 const Manager = require('../lib/Manager');
 const Employee = require('../lib/Employee');
 
-jest.mock('../lib/Manager');
 
-test('creates a Manager Object', () => {
+test ('check that an Manager object is created', () => {
     const manager = new Manager();
 
-    expect(manager.name).toEqual(expect.any(String));
-    expect(manager.id).toEqual(expect.any(String));
-    expect(manager.email).toEqual(expect.any(String));
-    expect(manager.office).toEqual(expect.any(String));
+    expect(typeof(manager)).toBe("object");
+});
+
+test ('check the name of the object', () => {
+    const manager = new Manager('Megan');
+    
+    expect(manager.name).toBe('Megan');
+});
+
+test('check that the getName object works', () => {
+    const manager = new Manager('Megan');
+
+    expect(manager.getName()).toBe('Megan');
+});
+
+test('check that object gets an Id', () => {
+    const manager = new Manager('Megan', 'A01');
+
+    expect(manager.id).toBe('A01');
+});
+
+test('check that getId works', () => {
+    const manager = new Manager('Megan', 'A01');
+    expect(manager.getId()).toBe('A01');
+});
+
+test('check that object gets an email', () => {
+    const manager = new Manager('Megan', 'A01', 'megan@email.com');
+
+    expect(manager.email).toContain('@' && '.com');
+    expect(manager.email).toBe('megan@email.com');
+});
+
+test('check getEmail works', () => {
+    const manager = new Manager('Megan', 'A01', 'megan@email.com');
+
+    expect(manager.getEmail()).toContain('@' && '.com');
+    expect(manager.getEmail()).toBe('megan@email.com');
+});
+
+test('check that object gets github', () => {
+    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+
+    expect(manager.github).toContain('https://github.com/');
+    expect(manager.github).toContain('https://github.com/megan');
+});
+
+test('check that getGitHub works', () => {
+    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+
+    expect(manager.getGitHub()).toContain('https://github.com/');
+    expect(manager.getGitHub()).toContain('https://github.com/megan');
+});
+
+test('check that object gets a role', () => {
+    const manager = new Manager();
+
+    expect(manager.getRole()).toBe('Manager');
 })
