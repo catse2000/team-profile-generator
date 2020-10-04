@@ -6,8 +6,8 @@ jest.mock('../lib/Manager');
 test('creates a Manager Object', () => {
     const manager = new Manager();
 
-    expect(manager.name).toBe('Carol');
-    expect(manager.id).toBe('M01');
-    expect(manager.email).toBe('carol@email.com');
-    expect(manager.office).toBe('001');
+    expect(manager.name).toEqual(expect.any(String));
+    expect(manager.id).toEqual(expect.any(String));
+    expect(manager.email).toEqual(expect.any(String));
+    expect(manager.office).toEqual(expect.any(String));
 })

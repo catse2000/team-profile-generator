@@ -6,8 +6,8 @@ jest.mock('../lib/Engineer');
 test ('check that an Engineer object is created', () => {
     const engineer = new Engineer();
 
-    expect(engineer.name).toBe('Steve');
-    expect(engineer.id).toBe('E01');
-    expect(engineer.email).toBe('steve@email.com');
-    expect(engineer.github).toBe('github.com/steve');
+    expect(engineer.name).toEqual(expect.any(String));
+    expect(engineer.id).toEqual(expect.any(String));
+    expect(engineer.email).toEqual(expect.any(String));
+    expect(engineer.github).toEqual(expect.any(String));
 });
