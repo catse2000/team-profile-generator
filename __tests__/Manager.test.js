@@ -46,17 +46,15 @@ test('check getEmail works', () => {
 });
 
 test('check that object gets github', () => {
-    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'office');
 
-    expect(manager.github).toContain('https://github.com/');
-    expect(manager.github).toContain('https://github.com/megan');
+    expect(manager.office).toBe("office");
 });
 
 test('check that getGitHub works', () => {
-    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const manager = new Manager('Megan', 'A01', 'megan@email.com', 'office');
 
-    expect(manager.getGitHub()).toContain('https://github.com/');
-    expect(manager.getGitHub()).toContain('https://github.com/megan');
+    expect(manager.getOffice()).toBe('office');
 });
 
 test('check that object gets a role', () => {

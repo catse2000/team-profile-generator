@@ -46,17 +46,15 @@ test('check getEmail works', () => {
 });
 
 test('check that object gets github', () => {
-    const intern = new Intern('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const intern = new Intern('Megan', 'A01', 'megan@email.com', 'UT Austin');
 
-    expect(intern.github).toContain('https://github.com/');
-    expect(intern.github).toContain('https://github.com/megan');
+    expect(intern.school).toBe('UT Austin');
 });
 
 test('check that getGitHub works', () => {
-    const intern = new Intern('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const intern = new Intern('Megan', 'A01', 'megan@email.com', 'UT Austin');
 
-    expect(intern.getGitHub()).toContain('https://github.com/');
-    expect(intern.getGitHub()).toContain('https://github.com/megan');
+    expect(intern.getSchool()).toBe('UT Austin');
 });
 
 test('check that object gets a role', () => {

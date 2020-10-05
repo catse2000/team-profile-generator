@@ -38,7 +38,7 @@ const generateEmployeeCards = employeesArr => {
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">ID: ${id}</li>
                                         <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
-                                        <li class="list-group-item">GitHub: <a href="https://github.com/${github}">https://github.com/${github}</a></li>
+                                        <li class="list-group-item">GitHub: <a href="https://github.com/${github}" target="_blank">https://github.com/${github}</a></li>
                                     </ul>
                                 </div>
                             </div>

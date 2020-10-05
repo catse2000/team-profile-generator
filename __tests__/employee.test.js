@@ -1,3 +1,4 @@
+const { dir } = require('console');
 const Employee = require('../lib/Employee.js');
 
 test('check if employee object is created', () => {
