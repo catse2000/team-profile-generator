@@ -134,7 +134,6 @@ const promptEmployees = teamData => {
         else{
             return teamData;
         }
-        console.log(teamData);
     })
 };
 

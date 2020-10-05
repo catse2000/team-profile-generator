@@ -1,9 +1,8 @@
 const generateEmployeeCards = employeesArr => {
-    console.log(employeesArr);
-
+    
     return `
         ${employeesArr
-            .filter(({ role }) => "Manager") 
+            .filter(({role}) => role === "Manager")
             .map(({name, id, email, office, role}) => {
                 return `
                     <section class="mx-4 mt-4">
@@ -25,58 +24,54 @@ const generateEmployeeCards = employeesArr => {
             })
             .join('')}
 
-        ${employeesArr
-            .filter(({ role }) => "Engineer") 
-            .map(({name, id, email, github, role}) => {
-                return `
-                    <section class="mx-4 mt-4">
-                        <div class="card" style="width: 18rem">
-                            <div class="card-header text-white bg-primary">
-                                ${name}
-                                ${role}
+            ${employeesArr
+                .filter(({role}) => role === "Engineer")
+                .map(({name, id, email, github, role}) => {
+                    return `
+                        <section class="mx-4 mt-4">
+                            <div class="card" style="width: 18rem">
+                                <div class="card-header text-white bg-primary">
+                                    ${name}
+                                    ${role}
+                                </div>
+                                <div class="card-body bg-light">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">ID: ${id}</li>
+                                        <li class="list-group-item">Email: ${email}</li>
+                                        <li class="list-group-item">GitHub: ${github}</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="card-body bg-light">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">ID: ${id}</li>
-                                    <li class="list-group-item">Email: ${email}</li>
-                                    <li class="list-group-item">Github: ${github}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                `;
-            })
-            .join('')}
-
-        ${employeesArr
-            .filter(({ role }) => "Intern") 
-            .map(({name, id, email, school, role}) => {
-                return `
-                    <section class="mx-4 mt-4">
-                        <div class="card" style="width: 18rem">
-                            <div class="card-header text-white bg-primary">
-                                ${name}
-                                ${role}
-                            </div>
-                            <div class="card-body bg-light">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">ID: ${id}</li>
-                                    <li class="list-group-item">Email: ${email}</li>
-                                    <li class="list-group-item">School: ${school}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                `;
-            })
-            .join('')}
+                        </section>
+                    `;
+                })
+                .join('')}
+                ${employeesArr
+                    .filter(({role}) => role === "Intern")
+                    .map(({name, id, email, school, role}) => {
+                        return `
+                            <section class="mx-4 mt-4">
+                                <div class="card" style="width: 18rem">
+                                    <div class="card-header text-white bg-primary">
+                                        ${name}
+                                        ${role}
+                                    </div>
+                                    <div class="card-body bg-light">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">ID: ${id}</li>
+                                            <li class="list-group-item">Email: ${email}</li>
+                                            <li class="list-group-item">School: ${school}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        `;
+                    })
+                    .join('')}
     `;
 };
 
 module.exports = templateData => {
-
-    //destructure page data by section
-    const employees = templateData;
 
     return `
     <!DOCTYPE html>
@@ -93,7 +88,7 @@ module.exports = templateData => {
     <body>
         <header class="bg-danger text-light text-center py-5" style="font-size: 24px;">My Team</header>
         <main class="d-flex justify-content-center flex-wrap">
-            ${generateEmployeeCards(employees)}
+            ${generateEmployeeCards(templateData)}
         </main>
     `;
 };
