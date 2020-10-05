@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('./src/page-template.js');
+const generatePage = require('./src/page-template.js');
+const { writeFile } = require('./utils/generate-site.js');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -127,15 +127,27 @@ const promptEmployees = teamData => {
                 break;
 
         }
-        
-        console.log(teamData);
+
         if(employeeData.confirmAddEmployee){
             return promptEmployees(teamData);
         }
         else{
             return teamData;
         }
+        console.log(teamData);
     })
 };
 
-promptEmployees();
+promptEmployees()
+    .then(teamData => {
+        return generatePage(teamData);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+    })
+    .catch(err => {
+        console.log(err);
+    })
