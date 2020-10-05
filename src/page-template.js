@@ -8,13 +8,13 @@ const generateEmployeeCards = employeesArr => {
                     <section class="mx-4 mt-4">
                         <div class="card" style="width: 18rem">
                             <div class="card-header text-white bg-primary">
-                                ${name}
-                                ${role}
+                                ${name}<br>
+                                <i class="fas fa-coffee text-white"></i> ${role}
                             </div>
                             <div class="card-body bg-light">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">ID: ${id}</li>
-                                    <li class="list-group-item">Email: ${email}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                                     <li class="list-group-item">Office: ${office}</li>
                                 </ul>
                             </div>
@@ -31,14 +31,14 @@ const generateEmployeeCards = employeesArr => {
                         <section class="mx-4 mt-4">
                             <div class="card" style="width: 18rem">
                                 <div class="card-header text-white bg-primary">
-                                    ${name}
-                                    ${role}
+                                    ${name}<br>
+                                    <i class="fas fa-glasses text-white"></i> ${role}
                                 </div>
                                 <div class="card-body bg-light">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">ID: ${id}</li>
-                                        <li class="list-group-item">Email: ${email}</li>
-                                        <li class="list-group-item">GitHub: ${github}</li>
+                                        <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
+                                        <li class="list-group-item">GitHub: <a href="https://github.com/${github}">https://github.com/${github}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,13 +53,13 @@ const generateEmployeeCards = employeesArr => {
                             <section class="mx-4 mt-4">
                                 <div class="card" style="width: 18rem">
                                     <div class="card-header text-white bg-primary">
-                                        ${name}
-                                        ${role}
+                                        ${name}<br>
+                                        <i class="fas fa-user-graduate"></i> ${role}
                                     </div>
                                     <div class="card-body bg-light">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">ID: ${id}</li>
-                                            <li class="list-group-item">Email: ${email}</li>
+                                            <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                                             <li class="list-group-item">School: ${school}</li>
                                         </ul>
                                     </div>
