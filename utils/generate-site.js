@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = require('fs'); //imports the module "fs" so as to enable file writing
 
-const writeFile = fileContent => {
+const writeFile = fileContent => { //used to write a new html file and check for errors
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
             // if there's an error, reject the Promise and send the error to the Promise's '.catch() method

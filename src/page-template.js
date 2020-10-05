@@ -1,5 +1,5 @@
 const generateEmployeeCards = employeesArr => {
-    
+    // generates code for every employee card created
     return `
         ${employeesArr
             .filter(({role}) => role === "Manager")
@@ -72,7 +72,7 @@ const generateEmployeeCards = employeesArr => {
 };
 
 module.exports = templateData => {
-
+    //generates the html code shell
     return `
     <!DOCTYPE html>
     <html lang="en">

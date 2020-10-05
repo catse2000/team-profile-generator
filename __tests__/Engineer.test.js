@@ -1,13 +1,14 @@
-const Engineer = require('../lib/Engineer');
-const Employee = require('../lib/Employee');
+const Engineer = require('../lib/Engineer'); //import "Engineer" class
+const Employee = require('../lib/Employee'); //import "Employee" class as this is the baseline to inherit from
 
-
+// Test that Engineer generates an object
 test ('check that an Engineer object is created', () => {
     const engineer = new Engineer();
 
     expect(typeof(engineer)).toBe("object");
 });
 
+// Test that when a name is provided to Engineer, that it returns the same value for both engineer.name and engineer.getName()
 test ('check the name of the object', () => {
     const engineer = new Engineer('Megan');
     
@@ -20,6 +21,7 @@ test('check that the getName object works', () => {
     expect(engineer.getName()).toBe('Megan');
 });
 
+// Test that when an ID is provided to Engineer, that it returns the same value for both engineer.id and engineer.getID()
 test('check that object gets an Id', () => {
     const engineer = new Engineer('Megan', 'A01');
 
@@ -31,6 +33,7 @@ test('check that getId works', () => {
     expect(engineer.getId()).toBe('A01');
 });
 
+// Test that when an email is provided to Engineer, that it returns the same value for both engineer.email and engineer.getEmail(), and that it includes an "@" and a ".com"
 test('check that object gets an email', () => {
     const engineer = new Engineer('Megan', 'A01', 'megan@email.com');
 
@@ -45,20 +48,20 @@ test('check getEmail works', () => {
     expect(engineer.getEmail()).toBe('megan@email.com');
 });
 
+// Test that when a github username is provided to Engineer, that it returns the same value for both engineer.github and engineer.getGitHub()
 test('check that object gets github', () => {
-    const engineer = new Engineer('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const engineer = new Engineer('Megan', 'A01', 'megan@email.com', 'megan');
 
-    expect(engineer.github).toContain('https://github.com/');
-    expect(engineer.github).toContain('https://github.com/megan');
+    expect(engineer.github).toBe('megan');
 });
 
 test('check that getGitHub works', () => {
-    const engineer = new Engineer('Megan', 'A01', 'megan@email.com', 'https://github.com/megan');
+    const engineer = new Engineer('Megan', 'A01', 'megan@email.com', 'megan');
 
-    expect(engineer.getGitHub()).toContain('https://github.com/');
-    expect(engineer.getGitHub()).toContain('https://github.com/megan');
+    expect(engineer.getGitHub()).toBe('megan');
 });
 
+// Test that engineer.role and engineer.getRole() returns "Engineer"
 test('check that object gets a role', () => {
     const engineer = new Engineer();
 
